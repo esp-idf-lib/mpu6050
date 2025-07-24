@@ -1,9 +1,5 @@
-.. Foo documentation master file, created by
-   sphinx-quickstart on Mon Jul 21 22:05:54 2025.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+mpu6050: Driver for MPU6000/MPU6050 6-axis MotionTracking device
+================================================================
 
-Welcome to Foo's documentation!
-===============================
-
-.. doxygenfile:: template-component.h
+ .. doxygenfile:: mpu6050.h
+ .. doxygenfile:: mpu6050_regs.h
