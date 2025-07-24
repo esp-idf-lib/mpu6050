@@ -1,0 +1,32 @@
+---
+version: 2.1.0
+description: Driver for MPU6000/MPU6050 6-axis MotionTracking device
+license: MIT
+targets:
+  - esp32
+  - esp32c2
+  - esp32c3
+  - esp32c5
+  - esp32c6
+  - esp32c61
+  - esp32h2
+  - esp32p4
+  - esp32s2
+  - esp32s3
+  - esp8266
+dependencies:
+  esp-idf-lib/esp_idf_lib_helpers:
+    version: "*"
+  esp-idf-lib/i2cdev:
+    version: "*"
+maintainers:
+  -
+  - Ruslan V. Uss (@UncleRus) <unclerus@gmail.com>
+url: https://github.com/esp-idf-lib/core
+repository: https://github.com/esp-idf-lib/mpu6050
+documentation: https://esp-idf-lib.github.io/mpu6050/
+issues: https://github.com/esp-idf-lib/mpu6050/issues
+discussion: https://github.com/esp-idf-lib/core/discussions
+files:
+  exclude:
+    - docs
