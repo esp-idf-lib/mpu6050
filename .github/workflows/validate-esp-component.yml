@@ -1,0 +1,19 @@
+---
+name: Validate the component
+
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+
+jobs:
+  validate-with-esp-component-registry:
+    if: ${{ github.event_name == 'pull_request' }}
+    uses: esp-idf-lib/shared-workflows/.github/workflows/validate-with-esp-component-registry.yml@main
+    with:
+      components: |
+        template-component:.
+    secrets:
+      api_token: ${{ secrets.ESP_TOKEN }}

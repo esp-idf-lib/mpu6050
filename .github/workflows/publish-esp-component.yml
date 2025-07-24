@@ -1,0 +1,15 @@
+---
+name: Publish the component to ESP Component Registry
+
+on:
+  release:
+    types:
+      - published
+jobs:
+  publish-with-esp-component-registry:
+    uses: esp-idf-lib/shared_workflows/.github/workflows/validate-with-esp-component-registry.yml@main
+    secrets:
+      api_token: ${{ secrets.ESP_TOKEN }}
+    with:
+      components: |
+        template-component:.
