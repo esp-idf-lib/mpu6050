@@ -14,6 +14,6 @@ jobs:
     uses: esp-idf-lib/shared-workflows/.github/workflows/validate-with-esp-component-registry.yml@main
     with:
       components: |
-        template-component:.
+        esp_idf_lib_helpers:.
     secrets:
       api_token: ${{ secrets.ESP_TOKEN }}

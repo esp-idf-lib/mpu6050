@@ -12,4 +12,4 @@ jobs:
       api_token: ${{ secrets.ESP_TOKEN }}
     with:
       components: |
-        template-component:.
+        esp_idf_lib_helpers:.
