@@ -7,7 +7,7 @@ on:
       - published
 jobs:
   publish-esp-component-registry:
-    uses: esp-idf-lib/shared_workflows/.github/workflows/publish-esp-component-registry.yml@main
+    uses: esp-idf-lib/shared-workflows/.github/workflows/publish-esp-component-registry.yml@main
     secrets:
       api_token: ${{ secrets.ESP_TOKEN }}
     with:
