@@ -9,4 +9,4 @@ on:
       - synchronize
 jobs:
   validate-esp-idf-lib-component:
-    uses: https://github.com/esp-idf-lib/shared-workflows/.github/workflows/validate-component.yml@main
+    uses: esp-idf-lib/shared-workflows/.github/workflows/validate-component.yml@main
