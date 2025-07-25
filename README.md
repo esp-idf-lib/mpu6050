@@ -1,5 +1,9 @@
 # esp-idf-lib/mpu6050
 
+[![Build examples](https://github.com/esp-idf-lib/mpu6050/actions/workflows//build.yml/badge.svg)](https://github.com/esp-idf-lib/mpu6050/actions/workflows//build.yml)
+[![Build docs](https://github.com/esp-idf-lib/mpu6050/actions/workflows//build-docs.yml/badge.svg)](https://github.com/esp-idf-lib/mpu6050/actions/workflows//build-docs.yml)
+[![Validation](https://github.com/esp-idf-lib/mpu6050/actions/workflows//validate-component.yml/badge.svg)](https://github.com/esp-idf-lib/mpu6050/actions/workflows//validate-component.yml)
+
 Driver for MPU6000/MPU6050 6-axis MotionTracking device.
 
 * [Documentation](https://esp-idf-lib.github.io/mpu6050/)
@@ -11,7 +15,7 @@ Driver for MPU6000/MPU6050 6-axis MotionTracking device.
 ## Installation
 
 ```sh
-idf.py add-dependency esp-idf-lib/mpu6050^2.1.0
+idf.py add-dependency esp-idf-lib/mpu6050
 ```
 
 ## Support
