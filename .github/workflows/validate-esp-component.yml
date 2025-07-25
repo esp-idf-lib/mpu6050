@@ -1,5 +1,5 @@
 ---
-name: Validate the component
+name: Validate the component with ESP Component Registry
 
 on:
   pull_request:
