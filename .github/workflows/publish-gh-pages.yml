@@ -1,6 +1,7 @@
 ---
 name: Publish released documentation
 on:
+  workflow_dispatch:
   release:
     types:
       - published

@@ -2,6 +2,7 @@
 name: Publish the component to ESP Component Registry
 
 on:
+  workflow_dispatch:
   release:
     types:
       - published
