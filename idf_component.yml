@@ -28,4 +28,4 @@ issues: https://github.com/esp-idf-lib/mpu6050/issues
 discussion: https://github.com/esp-idf-lib/core/discussions
 files:
   exclude:
-    - docs
+    - docs/**/*
