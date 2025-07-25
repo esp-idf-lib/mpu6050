@@ -1,27 +1,26 @@
-# Driver for the MPU6050
+# esp-idf-lib/mpu6050
 
-**NOTES:**
-This driver is taken from https://github.com/gabrielbvicari/esp32-mpu6050
+Driver for MPU6000/MPU6050 6-axis MotionTracking device.
 
-## Description:
+* [Documentation](https://esp-idf-lib.github.io/mpu6050/)
+* [Repository](https://github.com/esp-idf-lib/mpu6050)
+* [Issues](https://github.com/esp-idf-lib/mpu6050/issues)
+* [Discussions and questions](https://github.com/esp-idf-lib/core/discussions)
+* [Component page at the ESP Component Registry](https://components.espressif.com/components/esp-idf-lib/mpu6050)
 
-The [MPU-6050](https://create.arduino.cc/projecthub/CiferTech/what-is-mpu6050-b3b178) 
-is the world’s first and only 6-axis motion tracking devices designed for the low power,
-low cost, and high performance requirements of smartphones, tablets and wearable sensors.
+## Installation
 
+```sh
+idf.py add-dependency "esp-idf-lib/mpu6050^2.1.0
+```
 
-## LICENSE
+## Support
 
+For questions and discussions about the component, please use
+[Discussions](https://github.com/esp-idf-lib/core/discussions)
+at [esp-idf-lib/core](https://github.com/esp-idf-lib/core).
 
- The MIT License (MIT)
+## Contributing
 
- THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
- AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
- IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
- FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
- DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
- SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
- CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
- OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
- OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+Please read [CONTRIBUTING.md](https://github.com/esp-idf-lib/core/blob/main/CONTRIBUTING.md)
+at [esp-idf-lib/core](https://github.com/esp-idf-lib/core).
