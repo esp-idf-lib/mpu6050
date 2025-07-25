@@ -11,7 +11,7 @@ Driver for MPU6000/MPU6050 6-axis MotionTracking device.
 ## Installation
 
 ```sh
-idf.py add-dependency "esp-idf-lib/mpu6050^2.1.0
+idf.py add-dependency esp-idf-lib/mpu6050^2.1.0
 ```
 
 ## Support
