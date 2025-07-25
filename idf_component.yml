@@ -19,7 +19,7 @@ dependencies:
   esp-idf-lib/i2cdev:
     version: "*"
 maintainers:
-  -
+  - Raghav Jha (@horsemann07)
   - Ruslan V. Uss (@UncleRus) <unclerus@gmail.com>
 url: https://github.com/esp-idf-lib/core
 repository: https://github.com/esp-idf-lib/mpu6050
