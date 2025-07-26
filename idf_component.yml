@@ -1,5 +1,5 @@
 ---
-version: 2.1.2
+version: 2.1.3
 description: Driver for MPU6000/MPU6050 6-axis MotionTracking device
 license: MIT
 targets:
