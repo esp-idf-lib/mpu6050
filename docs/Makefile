@@ -57,9 +57,11 @@ BUILD_ENV=	env PROJECT_NAME="$(EIL_NAME)" \
 				PROJECT_COPYRIGHT="$(EIL_COPYRIGHT)" \
 				PROJECT_AUTHORS="$(EIL_CODEOWNERS)" \
 				PROJECT_RELEASE="$(EIL_VERSION)" \
-				OUTPUT_DIRECTORY="$(DOXYGEN_OUTPUT_DIR)" \
 				MAKE=$(MAKE)
 
+# XXX uncomment when dosxygen is fixed.
+# see https://github.com/esp-idf-lib/shared-workflows/commit/c95c0412b97c5c2e284165fcc4fa44794242d727
+# BUILD_ENV+=	OUTPUT_DIRECTORY="$(DOXYGEN_OUTPUT_DIR)"
 .DEFAULT_GOAL=	all
 .PHONY:	all clean
 
@@ -69,7 +71,7 @@ $(DOXYGEN_OUTPUT_DIR):
 
 # generate XML files from sources with doxygen
 $(DOXYGEN_XML_FILE): $(DOXYGEN_OUTPUT_DIR)
-	$(BUILD_ENV) $(DOXYGEN) $(DOXYGEN_FLAGS) $(DOXYGEN_CONF)
+#	$(BUILD_ENV) $(DOXYGEN) $(DOXYGEN_FLAGS) $(DOXYGEN_CONF)
 	$(SED) -i 's/LIB8STATIC_ALWAYS_INLINE/inline static/g' $(DOXYGEN_XML_DIR)/*.xml
 	$(SED) -i 's/LIB8STATIC/inline static/g' $(DOXYGEN_XML_DIR)/*.xml
 
