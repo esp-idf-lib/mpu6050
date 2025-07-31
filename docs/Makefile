@@ -66,7 +66,7 @@ BUILD_ENV=	env PROJECT_NAME="$(EIL_NAME)" \
 # see https://github.com/esp-idf-lib/shared-workflows/commit/c95c0412b97c5c2e284165fcc4fa44794242d727
 # BUILD_ENV+=	OUTPUT_DIRECTORY="$(DOXYGEN_OUTPUT_DIR)"
 .DEFAULT_GOAL=	all
-.PHONY:	all clean
+.PHONY:	all clean fixup-xml
 
 # create DOXYGEN_OUTPUT_DIR, where doxygen generates XML files
 $(DOXYGEN_OUTPUT_DIR):
@@ -80,7 +80,11 @@ $(DOXYGEN_XML_FILE): $(DOXYGEN_OUTPUT_DIR)
 
 build-doxygen: $(DOXYGEN_XML_FILE)
 
-$(SPHINX_HTML_FILE): $(DOXYGEN_XML_FILE)
+fixup-xml:
+	$(SED) -i 's|LIB8STATIC_ALWAYS_INLINE</ref>|$(LIB8STATIC_ALWAYS_INLINE)</ref>|g' $(DOXYGEN_XML_DIR)/*.xml
+	$(SED) -i 's|LIB8STATIC</ref>|$(LIB8STATIC)</ref>|g' $(DOXYGEN_XML_DIR)/*.xml
+
+$(SPHINX_HTML_FILE): $(DOXYGEN_XML_FILE) fixup-xml
 	$(BUILD_ENV) $(SPHINX) -M html $(SPHINX_SRC_DIR) $(SPHINX_BUILD_DIR) $(SPHINX_FLAGS_DEFAULT) $(SPHINX_FLAGS)
 
 # generate HTML files with sphinx-build.
