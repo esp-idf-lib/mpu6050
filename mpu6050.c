@@ -59,14 +59,16 @@
 
 static const char *TAG = "mpu6050";
 
-static const float accel_res[] = {
+static const float accel_res[] =
+{
     [MPU6050_ACCEL_RANGE_2]  = 2.0f / 32768.0f,
     [MPU6050_ACCEL_RANGE_4]  = 4.0f / 32768.0f,
     [MPU6050_ACCEL_RANGE_8]  = 8.0f / 32768.0f,
     [MPU6050_ACCEL_RANGE_16] = 16.0f / 32768.0f,
 };
 
-static const float gyro_res[] = {
+static const float gyro_res[] =
+{
     [MPU6050_GYRO_RANGE_250]  = 250.0f / 32768.0f,
     [MPU6050_GYRO_RANGE_500]  = 500.0f / 32768.0f,
     [MPU6050_GYRO_RANGE_1000] = 1000.0f / 32768.0f,
@@ -297,7 +299,11 @@ esp_err_t mpu6050_get_accel_self_test_factory_trim(mpu6050_dev_t *dev, mpu6050_a
 {
     CHECK_ARG(dev && trim && axis <= MPU6050_Z_AXIS);
 
-    static const struct { uint8_t r, s; } regs[] = {
+    static const struct
+    {
+        uint8_t r, s;
+    } regs[] =
+    {
         [MPU6050_X_AXIS] = { .r = MPU6050_REGISTER_SELF_TEST_X, .s = 4 },
         [MPU6050_Y_AXIS] = { .r = MPU6050_REGISTER_SELF_TEST_Y, .s = 2 },
         [MPU6050_Z_AXIS] = { .r = MPU6050_REGISTER_SELF_TEST_Z, .s = 0 },
@@ -318,7 +324,8 @@ esp_err_t mpu6050_get_gyro_self_test_factory_trim(mpu6050_dev_t *dev, mpu6050_ax
 {
     CHECK_ARG(axis <= MPU6050_Z_AXIS);
 
-    static const uint8_t regs[] = {
+    static const uint8_t regs[] =
+    {
         [MPU6050_X_AXIS] = MPU6050_REGISTER_SELF_TEST_X,
         [MPU6050_Y_AXIS] = MPU6050_REGISTER_SELF_TEST_Y,
         [MPU6050_Z_AXIS] = MPU6050_REGISTER_SELF_TEST_Z,
@@ -330,7 +337,8 @@ esp_err_t mpu6050_get_gyro_self_test_factory_trim(mpu6050_dev_t *dev, mpu6050_ax
     return ESP_OK;
 }
 
-static const uint8_t accel_sta_bits[] = {
+static const uint8_t accel_sta_bits[] =
+{
     [MPU6050_X_AXIS] = MPU6050_ACONFIG_XA_ST_BIT,
     [MPU6050_Y_AXIS] = MPU6050_ACONFIG_YA_ST_BIT,
     [MPU6050_Z_AXIS] = MPU6050_ACONFIG_ZA_ST_BIT,
@@ -450,7 +458,8 @@ esp_err_t mpu6050_set_temp_fifo_enabled(mpu6050_dev_t *dev, bool enabled)
     return write_reg_bool(dev, MPU6050_REGISTER_FIFO_EN, MPU6050_TEMP_FIFO_EN_BIT, enabled);
 }
 
-static const uint8_t gyro_fifo_bits[] = {
+static const uint8_t gyro_fifo_bits[] =
+{
     [MPU6050_X_AXIS] = MPU6050_XG_FIFO_EN_BIT,
     [MPU6050_Y_AXIS] = MPU6050_YG_FIFO_EN_BIT,
     [MPU6050_Z_AXIS] = MPU6050_ZG_FIFO_EN_BIT,
@@ -480,7 +489,11 @@ esp_err_t mpu6050_set_accel_fifo_enabled(mpu6050_dev_t *dev, bool enabled)
     return write_reg_bool(dev, MPU6050_REGISTER_FIFO_EN, MPU6050_ACCEL_FIFO_EN_BIT, enabled);
 }
 
-static const struct { uint8_t r, b; } slave_fifo_bits[] = {
+static const struct
+{
+    uint8_t r, b;
+} slave_fifo_bits[] =
+{
     [MPU6050_SLAVE_0] = { .r = MPU6050_REGISTER_FIFO_EN, .b = MPU6050_SLV2_FIFO_EN_BIT },
     [MPU6050_SLAVE_1] = { .r = MPU6050_REGISTER_FIFO_EN, .b = MPU6050_SLV1_FIFO_EN_BIT },
     [MPU6050_SLAVE_2] = { .r = MPU6050_REGISTER_FIFO_EN, .b = MPU6050_SLV0_FIFO_EN_BIT },
@@ -688,7 +701,8 @@ esp_err_t mpu6050_get_slave_nack(mpu6050_dev_t *dev, mpu6050_slave_t num, bool *
 {
     CHECK_ARG(num <= MPU6050_SLAVE_4);
 
-    static const uint8_t bits[] = {
+    static const uint8_t bits[] =
+    {
         [MPU6050_SLAVE_0] = MPU6050_MST_I2C_SLV0_NACK_BIT,
         [MPU6050_SLAVE_1] = MPU6050_MST_I2C_SLV1_NACK_BIT,
         [MPU6050_SLAVE_2] = MPU6050_MST_I2C_SLV2_NACK_BIT,
@@ -801,7 +815,8 @@ esp_err_t mpu6050_get_int_status(mpu6050_dev_t *dev, uint8_t *ints)
     return read_reg(dev, MPU6050_REGISTER_INT_ENABLE, ints);
 }
 
-static const uint8_t accel_offs_regs[] = {
+static const uint8_t accel_offs_regs[] =
+{
     [MPU6050_X_AXIS] = MPU6050_REGISTER_XA_OFFS_H,
     [MPU6050_Y_AXIS] = MPU6050_REGISTER_YA_OFFS_H,
     [MPU6050_Z_AXIS] = MPU6050_REGISTER_ZA_OFFS_H,
@@ -821,7 +836,8 @@ esp_err_t mpu6050_set_accel_offset(mpu6050_dev_t *dev, mpu6050_axis_t axis, int1
     return write_reg_word(dev, accel_offs_regs[axis], offset);
 }
 
-static const uint8_t gyro_offs_regs[] = {
+static const uint8_t gyro_offs_regs[] =
+{
     [MPU6050_X_AXIS] = MPU6050_REGISTER_XG_OFFS_USRH,
     [MPU6050_Y_AXIS] = MPU6050_REGISTER_YG_OFFS_USRH,
     [MPU6050_Z_AXIS] = MPU6050_REGISTER_ZG_OFFS_USRH,
@@ -1144,7 +1160,8 @@ esp_err_t mpu6050_set_wake_frequency(mpu6050_dev_t *dev, mpu6050_wake_freq_t fre
     return write_reg_bits(dev, MPU6050_REGISTER_PWR_MGMT_2, MPU6050_PWR2_LP_WAKE_CTRL_BIT, MPU6050_PWR2_LP_WAKE_CTRL_MASK, frequency);
 }
 
-static const uint8_t standby_accel_bits[] = {
+static const uint8_t standby_accel_bits[] =
+{
     [MPU6050_X_AXIS] = MPU6050_PWR2_STBY_XA_BIT,
     [MPU6050_Y_AXIS] = MPU6050_PWR2_STBY_YA_BIT,
     [MPU6050_Z_AXIS] = MPU6050_PWR2_STBY_ZA_BIT,
@@ -1164,7 +1181,8 @@ esp_err_t mpu6050_set_standby_accel_enabled(mpu6050_dev_t *dev, mpu6050_axis_t a
     return write_reg_bool(dev, MPU6050_REGISTER_PWR_MGMT_2, standby_accel_bits[axis], enabled);
 }
 
-static const uint8_t standby_gyro_bits[] = {
+static const uint8_t standby_gyro_bits[] =
+{
     [MPU6050_X_AXIS] = MPU6050_PWR2_STBY_XG_BIT,
     [MPU6050_Y_AXIS] = MPU6050_PWR2_STBY_YG_BIT,
     [MPU6050_Z_AXIS] = MPU6050_PWR2_STBY_ZG_BIT,

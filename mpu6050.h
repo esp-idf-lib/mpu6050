@@ -100,7 +100,8 @@ typedef struct
 /**
  * Auxiliary I2C supply voltage levels
  */
-typedef enum {
+typedef enum
+{
     MPU6050_VDDIO_VLOGIC = 0,
     MPU6050_VDDIO_VDD,
 } mpu6050_vddio_level_t;
@@ -108,7 +109,8 @@ typedef enum {
 /**
  * Axes
  */
-typedef enum {
+typedef enum
+{
     MPU6050_X_AXIS = 0,
     MPU6050_Y_AXIS,
     MPU6050_Z_AXIS,
@@ -117,7 +119,8 @@ typedef enum {
 /**
  * Clock sources
  */
-typedef enum {
+typedef enum
+{
     MPU6050_CLOCK_INTERNAL = 0, //!< Internal oscillator
     MPU6050_CLOCK_PLL_X,        //!< PLL with X Gyro reference
     MPU6050_CLOCK_PLL_Y,        //!< PLL with Y Gyro reference
@@ -131,7 +134,8 @@ typedef enum {
 /**
  * Interrupt sources
  */
-typedef enum {
+typedef enum
+{
     MPU6050_INT_DATA_READY  = BIT(0),  //!< Data Ready interrupt which occurs each time a write operation to all of the sensor registers has been completed
     MPU6050_INT_DMP         = BIT(1),  //!< Undocumented
     MPU6050_INT_PLL_READY   = BIT(2),  //!< Undocumented
@@ -145,7 +149,8 @@ typedef enum {
 /**
  * INT pin modes
  */
-typedef enum {
+typedef enum
+{
     MPU6050_INT_PUSH_PULL = 0, //!< Push-pull
     MPU6050_INT_OPEN_DRAIN,    //!< Open drain
 } mpu6050_int_drive_t;
@@ -153,7 +158,8 @@ typedef enum {
 /**
  * Location of the frame synchronization sampled bit
  */
-typedef enum {
+typedef enum
+{
     MPU6050_EXT_SYNC_DISABLED = 0,
     MPU6050_EXT_SYNC_TEMP_OUT,
     MPU6050_EXT_SYNC_GYRO_XOUT,
@@ -167,7 +173,8 @@ typedef enum {
 /**
  * Gyroscope and accelerometer filter values
  */
-typedef enum {
+typedef enum
+{
     MPU6050_DLPF_0 = 0, //!< Accelerometer: BW = 260Hz, delay = 0, Gyroscope: BW = 256Hz, delay = 0.98ms, Fs = 8kHz
     MPU6050_DLPF_1,     //!< Accelerometer: BW = 184z, delay = 2ms, Gyroscope: BW = 188Hz, delay = 1.9ms, Fs = 1kHz
     MPU6050_DLPF_2,     //!< Accelerometer: BW = 94Hz, delay = 3ms, Gyroscope: BW = 98Hz, delay = 2.8ms, Fs = 1kHz
@@ -180,7 +187,8 @@ typedef enum {
 /**
  * Scale ranges for gyroscope
  */
-typedef enum {
+typedef enum
+{
     MPU6050_GYRO_RANGE_250 = 0,  //!< ± 250 °/s
     MPU6050_GYRO_RANGE_500,      //!< ± 500 °/s
     MPU6050_GYRO_RANGE_1000,     //!< ± 1000 °/s
@@ -190,7 +198,8 @@ typedef enum {
 /**
  * Scale ranges for accelerometer
  */
-typedef enum {
+typedef enum
+{
     MPU6050_ACCEL_RANGE_2 = 0, //!< ± 2g
     MPU6050_ACCEL_RANGE_4,     //!< ± 4g
     MPU6050_ACCEL_RANGE_8,     //!< ± 8g
@@ -200,7 +209,8 @@ typedef enum {
 /**
  * Digital high pass filter modes
  */
-typedef enum {
+typedef enum
+{
     MPU6050_DHPF_RESET = 0, //!< Filter Mode = reset, Cut-off Frequency = None
     MPU6050_DHPF_5,         //!< Filter Mode = on, Cut-off Frequency = 5Hz
     MPU6050_DHPF_2_5,       //!< Filter Mode = on, Cut-off Frequency = 2.5Hz
@@ -212,7 +222,8 @@ typedef enum {
 /**
  * I2C slave numbers
  */
-typedef enum {
+typedef enum
+{
     MPU6050_SLAVE_0 = 0,
     MPU6050_SLAVE_1,
     MPU6050_SLAVE_2,
@@ -223,7 +234,8 @@ typedef enum {
 /**
  * I2C master clock
  */
-typedef enum {
+typedef enum
+{
     MPU6050_I2C_MASTER_CLOCK_348 = 0,   //!< 348kHz
     MPU6050_I2C_MASTER_CLOCK_333,       //!< 333kHz
     MPU6050_I2C_MASTER_CLOCK_320,       //!< 320kHz
@@ -245,7 +257,8 @@ typedef enum {
 /**
  * Interrupt levels
  */
-typedef enum {
+typedef enum
+{
     MPU6050_INT_LEVEL_HIGH = 0, //!< Active high
     MPU6050_INT_LEVEL_LOW,      //!< Active low
 } mpu6050_int_level_t;
@@ -253,7 +266,8 @@ typedef enum {
 /**
  * Interrupt latch modes
  */
-typedef enum {
+typedef enum
+{
     MPU6050_INT_LATCH_PULSE = 0,  //!< 50 us pulse
     MPU6050_INT_LATCH_CONTINUOUS, //!< Latch until cleared
 } mpu6050_int_latch_t;
@@ -261,7 +275,8 @@ typedef enum {
 /**
  * The frequencies of wake-ups in Accelerometer Only Low Power Mode
  */
-typedef enum {
+typedef enum
+{
     MPU6050_WAKE_FREQ_1_25 = 0, //!< 1.25Hz
     MPU6050_WAKE_FREQ_5,        //!< 5Hz
     MPU6050_WAKE_FREQ_20,       //!< 20Hz
@@ -271,7 +286,8 @@ typedef enum {
 /**
  * Motion detection status flags
  */
-typedef enum {
+typedef enum
+{
     MPU6050_MOTION_ZERO  = BIT(0),
     MPU6050_MOTION_Z_POS = BIT(2),
     MPU6050_MOTION_Z_NEG = BIT(3),
@@ -284,7 +300,8 @@ typedef enum {
 /**
  * Device descriptor
  */
-typedef struct {
+typedef struct
+{
     i2c_dev_t i2c_dev;
     struct
     {
