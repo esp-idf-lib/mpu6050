@@ -1409,8 +1409,8 @@ esp_err_t mpu6050_calibrate(mpu6050_dev_t *dev, float *accel_bias_res, float *gy
 
     // Push accelerometer biases to hardware registers:
     CHECK(mpu6050_set_accel_offset(dev, MPU6050_X_AXIS, ((int16_t)tmp_data[0]) << 8 | tmp_data[1]));
-    CHECK(mpu6050_set_accel_offset(dev, MPU6050_X_AXIS, ((int16_t)tmp_data[2]) << 8 | tmp_data[3]));
-    CHECK(mpu6050_set_accel_offset(dev, MPU6050_X_AXIS, ((int16_t)tmp_data[4]) << 8 | tmp_data[5]));
+    CHECK(mpu6050_set_accel_offset(dev, MPU6050_Y_AXIS, ((int16_t)tmp_data[2]) << 8 | tmp_data[3]));
+    CHECK(mpu6050_set_accel_offset(dev, MPU6050_Z_AXIS, ((int16_t)tmp_data[4]) << 8 | tmp_data[5]));
 
     // Output scaled accelerometer biases for subtraction in the main program:
     accel_bias_res[0] = (float)accel_bias[0] / (float)accel_sensitivity;
