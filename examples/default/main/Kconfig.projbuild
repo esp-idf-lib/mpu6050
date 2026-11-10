@@ -18,7 +18,6 @@ menu "MPU6050 Example Configuration"
 
     config EXAMPLE_SCL_GPIO
         int "MPU6050 SCL GPIO Number"
-        default 5 if IDF_TARGET_ESP8266
         default 4 if IDF_TARGET_ESP32C2 || IDF_TARGET_ESP32C3 || IDF_TARGET_ESP32C5 || IDF_TARGET_ESP32C6 || IDF_TARGET_ESP32C61
         default 4 if IDF_TARGET_ESP32H2
         default 4 if IDF_TARGET_ESP32P4
@@ -28,7 +27,6 @@ menu "MPU6050 Example Configuration"
 
     config EXAMPLE_SDA_GPIO
         int "MPU6050 SDA GPIO Number"
-        default 4 if IDF_TARGET_ESP8266
         default 5 if IDF_TARGET_ESP32C2 || IDF_TARGET_ESP32C3 || IDF_TARGET_ESP32C5 || IDF_TARGET_ESP32C6 || IDF_TARGET_ESP32C61
         default 5 if IDF_TARGET_ESP32H2
         default 5 if IDF_TARGET_ESP32P4
