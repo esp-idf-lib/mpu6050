@@ -1,18 +1,7 @@
 ---
-version: 2.1.9
+version: 2.1.10
 description: Driver for MPU6000/MPU6050 6-axis MotionTracking device
 license: MIT
-targets:
-  - esp32
-  - esp32c2
-  - esp32c3
-  - esp32c5
-  - esp32c6
-  - esp32c61
-  - esp32h2
-  - esp32p4
-  - esp32s2
-  - esp32s3
 dependencies:
   esp-idf-lib/esp_idf_lib_helpers:
     version: "*"
