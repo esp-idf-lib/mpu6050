@@ -22,7 +22,6 @@ body:
       label: Which SDK are you using?
       options:
         - esp-idf
-        - ESP8266 RTOS SDK
 
   - type: input
     id: sdk_version
@@ -52,7 +51,6 @@ body:
         - label: esp32c61
         - label: esp32h2
         - label: esp32p4
-        - label: esp8266
         - label: other
 
   - type: input
