@@ -1259,6 +1259,11 @@ esp_err_t mpu6050_calibrate(mpu6050_dev_t *dev, float *accel_bias_res, float *gy
     CHECK(mpu6050_reset(dev));
     vTaskDelay(pdMS_TO_TICKS(100));
 
+    // The reset puts the device to sleep and a sleeping device does not fill
+    // the FIFO, so wake it up before configuring the measurement.
+    CHECK(mpu6050_set_sleep_enabled(dev, false));
+    vTaskDelay(pdMS_TO_TICKS(100));
+
     CHECK(mpu6050_set_clock_source(dev, MPU6050_CLOCK_PLL_X));
     vTaskDelay(pdMS_TO_TICKS(200));
 
