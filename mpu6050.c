@@ -1321,7 +1321,7 @@ esp_err_t mpu6050_calibrate(mpu6050_dev_t *dev, float *accel_bias_res, float *gy
     for (int i = 0; i < packet_count; i++)
     {
         // Read data for averaging:
-        CHECK(mpu6050_get_fifo_bytes(dev, &tmp_data[0], 6));
+        CHECK(mpu6050_get_fifo_bytes(dev, tmp_data, sizeof(tmp_data)));
         accel_temp[0] = (int16_t)(((int16_t)tmp_data[0] << 8) | tmp_data[1]);
         accel_temp[1] = (int16_t)(((int16_t)tmp_data[2] << 8) | tmp_data[3]);
         accel_temp[2] = (int16_t)(((int16_t)tmp_data[4] << 8) | tmp_data[5]);
