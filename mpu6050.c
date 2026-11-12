@@ -1312,6 +1312,12 @@ esp_err_t mpu6050_calibrate(mpu6050_dev_t *dev, float *accel_bias_res, float *gy
     CHECK(mpu6050_get_fifo_count(dev, &packet_count));
     packet_count /= 12;
 
+    if (!packet_count)
+    {
+        ESP_LOGE(TAG, "FIFO is empty, calibration is impossible");
+        return ESP_ERR_INVALID_STATE;
+    }
+
     for (int i = 0; i < packet_count; i++)
     {
         // Read data for averaging:

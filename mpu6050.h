@@ -2404,7 +2404,10 @@ esp_err_t mpu6050_get_device_id(mpu6050_dev_t *dev, uint8_t *id);
  * @param[out] accel_bias_res Acceleration bias resolution.
  * @param[out] gyro_bias_res Rotation bias resolution.
  *
- * @return `ESP_OK` on success
+ * @return `ESP_OK` on success,
+ *         `ESP_ERR_INVALID_STATE` if the device collected no samples into the
+ *         FIFO, i.e. it was not able to measure, or an error code of the
+ *         underlying I2C transaction
  */
 esp_err_t mpu6050_calibrate(mpu6050_dev_t *dev, float *accel_bias_res, float *gyro_bias_res);
 
