@@ -1219,7 +1219,7 @@ esp_err_t mpu6050_get_fifo_bytes(mpu6050_dev_t *dev, uint8_t *data, size_t lengt
     CHECK_ARG(dev && data && length);
 
     I2C_DEV_TAKE_MUTEX(&dev->i2c_dev);
-    I2C_DEV_CHECK(&dev->i2c_dev, i2c_dev_read_reg(&dev->i2c_dev, MPU6050_REGISTER_FIFO_COUNTH, data, length));
+    I2C_DEV_CHECK(&dev->i2c_dev, i2c_dev_read_reg(&dev->i2c_dev, MPU6050_REGISTER_FIFO_R_W, data, length));
     I2C_DEV_GIVE_MUTEX(&dev->i2c_dev);
 
     return ESP_OK;
@@ -1257,6 +1257,11 @@ esp_err_t mpu6050_calibrate(mpu6050_dev_t *dev, float *accel_bias_res, float *gy
     uint16_t packet_count;
 
     CHECK(mpu6050_reset(dev));
+    vTaskDelay(pdMS_TO_TICKS(100));
+
+    // The reset puts the device to sleep and a sleeping device does not fill
+    // the FIFO, so wake it up before configuring the measurement.
+    CHECK(mpu6050_set_sleep_enabled(dev, false));
     vTaskDelay(pdMS_TO_TICKS(100));
 
     CHECK(mpu6050_set_clock_source(dev, MPU6050_CLOCK_PLL_X));
@@ -1307,10 +1312,16 @@ esp_err_t mpu6050_calibrate(mpu6050_dev_t *dev, float *accel_bias_res, float *gy
     CHECK(mpu6050_get_fifo_count(dev, &packet_count));
     packet_count /= 12;
 
+    if (!packet_count)
+    {
+        ESP_LOGE(TAG, "FIFO is empty, calibration is impossible");
+        return ESP_ERR_INVALID_STATE;
+    }
+
     for (int i = 0; i < packet_count; i++)
     {
         // Read data for averaging:
-        CHECK(mpu6050_get_fifo_bytes(dev, &tmp_data[0], 6));
+        CHECK(mpu6050_get_fifo_bytes(dev, tmp_data, sizeof(tmp_data)));
         accel_temp[0] = (int16_t)(((int16_t)tmp_data[0] << 8) | tmp_data[1]);
         accel_temp[1] = (int16_t)(((int16_t)tmp_data[2] << 8) | tmp_data[3]);
         accel_temp[2] = (int16_t)(((int16_t)tmp_data[4] << 8) | tmp_data[5]);
