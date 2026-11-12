@@ -1219,7 +1219,7 @@ esp_err_t mpu6050_get_fifo_bytes(mpu6050_dev_t *dev, uint8_t *data, size_t lengt
     CHECK_ARG(dev && data && length);
 
     I2C_DEV_TAKE_MUTEX(&dev->i2c_dev);
-    I2C_DEV_CHECK(&dev->i2c_dev, i2c_dev_read_reg(&dev->i2c_dev, MPU6050_REGISTER_FIFO_COUNTH, data, length));
+    I2C_DEV_CHECK(&dev->i2c_dev, i2c_dev_read_reg(&dev->i2c_dev, MPU6050_REGISTER_FIFO_R_W, data, length));
     I2C_DEV_GIVE_MUTEX(&dev->i2c_dev);
 
     return ESP_OK;
